@@ -1,0 +1,43 @@
+<div class="container w-50 mt-5">
+  <!--
+  *** Lean ag form module
+      Keep a pattern
+      #<name Of Form Tag>="ngForm"  works with (ngSubmit)="<method has argument type any>"
+  -->
+  <form #formUpdate="ngForm" (ngSubmit)="onClickedSubmitFormUpdate(formUpdate.value)" class="form form-control mt-2"> <!-- // form module -->
+
+    <strong>Form Update Product</strong>
+
+    <div class="container" style="padding: 50px 50px 50px 285px;">
+      <img width="150px" src="{{product.image}}">
+    </div>
+
+    <div class="form-floating mb-3">
+      <input ngModel type="text" class="form-control" placeholder="title..." name="title" >
+      <label >{{product.title }}</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <!-- *** remember get value from tags *** just mapped the name  -->
+      <!-- before mapped have to mark ngModel attribute in input text field.  -->
+      <input ngModel type="text" class="form-control" placeholder="description..." name="description" >
+      <label>{{ product.description.substring(0,95)+'...' }}</label>
+    </div>
+
+
+    <div class="form-floating mb-3">
+      <!-- *** remember get value from tags *** just mapped the name  -->
+      <!-- before mapped have to mark ngModel attribute in input text field.  -->
+      <input ngModel type="number" class="form-control" placeholder="price..." name="price">
+      <label>{{ product.price | currency : 'THB'}}</label>
+    </div>
+    <button type="submit" class="btn btn-secondary mt-2">Submit</button>
+
+  </form>
+
+
+  <!-- i set on parent component instead it works-->
+  <!-- *** now routerLink already to use -->
+  <!--<router-outlet></router-outlet>-->
+
+</div>

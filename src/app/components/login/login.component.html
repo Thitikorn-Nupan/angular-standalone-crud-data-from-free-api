@@ -1,0 +1,31 @@
+<div class="container w-25 mt-5">
+  <strong>Guards Routing Concept <br>{{message}}</strong>
+  <!--
+  *** Lean ag form module
+      Keep a pattern
+      #<name Of Form Tag>="ngForm"  works with (ngSubmit)="<method has argument type any>"
+  -->
+  <form #formLogin="ngForm" (ngSubmit)="onClickedSubmitFormLogin(formLogin.value)" class="form form-control mt-2"> <!-- // form module -->
+
+    <div class="form-floating mb-3">
+      <input ngModel type="text" class="form-control" placeholder="Username..." name="username">
+      <label >Username</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <!-- *** remember get value from tags *** just mapped the name  -->
+      <!-- before mapped have to mark ngModel attribute in input text field.  -->
+      <input ngModel type="password" class="form-control" placeholder="***********" name="password">
+      <label>Password</label>
+    </div>
+
+    <button type="submit" class="btn btn-secondary mt-2">Submit</button>
+
+  </form>
+
+
+  <!-- i set on parent component instead it works-->
+  <!-- *** now routerLink already to use -->
+  <!--<router-outlet></router-outlet>-->
+
+</div>
