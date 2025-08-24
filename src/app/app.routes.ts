@@ -6,7 +6,7 @@ import {UpdateProductComponent} from "./components/update-product/update-product
 import {CreateProductComponent} from "./components/create-product/create-product.component";
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent  },
   { path: 'create', component: CreateProductComponent , canActivate: [ManageRoutesGuard]},
   { path: 'update/:id', component: UpdateProductComponent , canActivate: [ManageRoutesGuard] },
   { path: 'options', component: OptionsComponent , canActivate: [ManageRoutesGuard] },

@@ -1,6 +1,5 @@
-<!-- if this component can access = many component can access -->
-<div class="container mt-2">
-  <div *ngIf="disableReadsReadUpdateDeleteProductsComponent">
+<div class="container mt-2"> <!-- if this component can access = many component can access -->
+  <ng-container *ngIf="disableReadsReadUpdateDeleteProductsComponent">
     <app-reads-read-update-delete-products></app-reads-read-update-delete-products>
-  </div>
+  </ng-container>
 </div>

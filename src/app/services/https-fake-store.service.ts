@@ -7,14 +7,13 @@ import {Product} from "../entities/product";
 @Injectable({
   providedIn: 'root'
 })
-// this service work for loading entity as json
-export class HttpsFakeStoreService {
+export class HttpsFakeStoreService { // this service work for loading entity as json
 
-  private httpClient: HttpClient;
+  // private httpClient: HttpClient;
   private baseUrl: string = environment.productUrls;
 
-  constructor(httpClient: HttpClient) {
-    this.httpClient = httpClient;
+  constructor(private httpClient: HttpClient) {
+    // this.httpClient = httpClient;
   }
 
   public retrieveAllProducts(): Observable<Product[]> {

@@ -24,7 +24,6 @@ export class UpdateProductComponent implements OnInit {
   protected product : Product = new Product(0,'',0,'','','');
 
   constructor(activatedRoute: ActivatedRoute, productService: ProductService , router: Router) {
-    console.log('UpdateProductComponent class work')
     this.activatedRoute = activatedRoute
     this.productService = productService
     this.router = router
@@ -43,21 +42,14 @@ export class UpdateProductComponent implements OnInit {
   }
 
 
-  onClickedSubmitFormUpdate(formUpdate: any) {
-
-    // console.log(`old title : ${this.product.title}  , id : ${this.product.id}`)
+  protected onSubmitFormUpdate(formUpdate: any) {
     const title = formUpdate['title']
     const price = formUpdate['price']
     const description = formUpdate['description']
-    // update entities
     this.product.title = title
     this.product.price = price
     this.product.description = description
-    // console.log(`new title : ${this.product.title} , id : ${this.product.id}`)
-
     this.productService.updateProduct(this.product.id,this.product)
-
     this.router.navigateByUrl('/options')
-
   }
 }

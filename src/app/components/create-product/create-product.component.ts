@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CurrencyPipe} from "@angular/common";
+import {CurrencyPipe, NgForOf} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../entities/product";
@@ -11,7 +11,8 @@ import {Router} from "@angular/router";
   imports: [
     CurrencyPipe,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgForOf
   ],
   templateUrl: './create-product.component.html',
   styleUrl: './create-product.component.css'
@@ -20,13 +21,19 @@ export class CreateProductComponent {
 
   private productService: ProductService;
   private router: Router;
+  protected readonly categories = [
+    {value: 'electronics', label: 'Electronics', id: 'radio2'},
+    {value: 'jewelery', label: 'Jewelery', id: 'radio3'},
+    {value: 'women\'s clothing', label: 'Women\'s clothing', id: 'radio4'},
+    {value: 'men\'s clothing', label: 'Men\'s clothing', id: 'radio5'}
+  ]
 
   constructor(productService: ProductService, router: Router) {
     this.productService = productService;
     this.router = router;
   }
 
-  onClickedSubmitFormCreate(formCreate: any) {
+  onSubmitFormCreate(formCreate: any) {
 
     const imageUrls = formCreate['image'];
     const title = formCreate['title'];

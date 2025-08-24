@@ -1,20 +1,18 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpsFakeStoreService} from "./https-fake-store.service";
-import {Observable, ReplaySubject} from "rxjs";
+import { ReplaySubject} from "rxjs";
 import {Product} from "../entities/product";
 
 @Injectable({
   providedIn: 'root'
 })
-// onInit does not work on services class
-export class ProductService {
+export class ProductService { // onInit does not work on services class
 
-  private httpsFakeStoreService: HttpsFakeStoreService
-  private productsReplaySubject: ReplaySubject<Product[]>
+ //  private httpsFakeStoreService: HttpsFakeStoreService
+  private readonly productsReplaySubject: ReplaySubject<Product[]>
   private products : Product[] = []
 
-  constructor(httpsFakeStoreService: HttpsFakeStoreService) {
-    this.httpsFakeStoreService = httpsFakeStoreService;
+  constructor(private httpsFakeStoreService: HttpsFakeStoreService) {
     this.productsReplaySubject = new ReplaySubject<Product[]>();
     this.initialProducts();
   }
@@ -54,11 +52,7 @@ export class ProductService {
     const lastIndex = this.products.length
     product.id = lastIndex+1
     this.products.push(product)
-    // update products
     this.productsReplaySubject.next(this.products)
   }
-
-
-
 
 }
