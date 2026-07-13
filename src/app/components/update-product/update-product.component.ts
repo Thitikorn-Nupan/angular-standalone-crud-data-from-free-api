@@ -18,9 +18,9 @@ import {CurrencyPipe} from "@angular/common";
 })
 export class UpdateProductComponent implements OnInit {
 
-  private activatedRoute: ActivatedRoute // for retrieve params on path that sent by get method
-  private productService: ProductService
-  private router: Router
+  private readonly activatedRoute: ActivatedRoute // for retrieve params on path that sent by get method
+  private readonly productService: ProductService
+  private readonly router: Router
   protected product : Product = new Product(0,'',0,'','','');
 
   constructor(activatedRoute: ActivatedRoute, productService: ProductService , router: Router) {
@@ -30,9 +30,8 @@ export class UpdateProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.paramMap.get("id")! // get param on url
-    this.productService.getProducts().subscribe(
-      response => {
+    const id : string = this.activatedRoute.snapshot.paramMap.get("id")! // get param on url
+    this.productService.getProducts().subscribe(response => {
         response.filter(product => {
           if (product.id === Number(id)) {
             this.product = product
@@ -41,8 +40,7 @@ export class UpdateProductComponent implements OnInit {
       })
   }
 
-
-  protected onSubmitFormUpdate(formUpdate: any) {
+  protected onSubmit(formUpdate: any) {
     const title = formUpdate['title']
     const price = formUpdate['price']
     const description = formUpdate['description']

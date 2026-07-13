@@ -30,7 +30,7 @@ export class ProductService { // onInit does not work on services class
 
   public deleteProduct(id: number) {
     // can't use id for removing because if some id deleted next id will stay at the same element
-    let pid = this.products.find(product => product.id === id)
+    const pid = this.products.find(product => product.id === id)
     this.products.splice(this.products.indexOf(pid!), 1); // delete by id
     this.productsReplaySubject.next(this.products) // then publish
   }
@@ -40,7 +40,7 @@ export class ProductService { // onInit does not work on services class
     const isProductExits = this.products.find(product => product.id === id)
     if (isProductExits !== undefined) {
       // use object for finding real element on array
-      const index = this.products.indexOf(isProductExits!)
+      const index : number = this.products.indexOf(isProductExits!)
       // replace object at the same position it was stayed
       this.products[index] = product
       // update products

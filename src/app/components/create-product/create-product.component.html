@@ -1,10 +1,5 @@
 <div class="container w-50 mt-5">
-  <!--
-  *** Ag form module
-      Keep a pattern
-      #<name Of Form Tag>="ngForm"  works with (ngSubmit)="<method has argument type any>"
-  -->
-  <form #formCreate="ngForm" (ngSubmit)="onSubmitFormCreate(formCreate.value)" class="form form-control mt-2"> <!-- // form module -->
+  <form #formCreate="ngForm" (ngSubmit)="onSubmit(formCreate.value)" class="form form-control mt-2"> <!-- // form module -->
     <strong>Form Create Product</strong>
 
     <!-- *** remember get value from tags *** just mapped the name  before mapped have to mark ngModel attribute in input text field. -->
@@ -27,7 +22,6 @@
       <input ngModel name="price" type="number" class="form-control" placeholder="price..." >
       <label>Price</label>
     </div>
-
 
     <div class="form-control">
       <strong>Category</strong>

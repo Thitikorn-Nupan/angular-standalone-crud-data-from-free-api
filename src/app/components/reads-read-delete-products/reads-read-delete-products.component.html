@@ -4,23 +4,21 @@
     <!-- (change)="" work after input changes -->
     <ng-container *ngFor="let data of categories">
       <div class="form-check">
-        <input  [(ngModel)]="category"  [value]="data.value" (change)="onCategoryChange()" [id]="data.id" class="form-check-input" type="radio" >
+        <input  [(ngModel)]="category" [value]="data.value" (change)="onCategoryChange()" [id]="data.id" class="form-check-input" type="radio" >
         <label class="form-check-label" [for]="data.id">
           {{ data.label }}
         </label>
       </div>
     </ng-container>
   </div>
-
   <table class="table table-light  mt-5">
     <thead class="table-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
-      <th scope="col">Image</th>
-      <th scope="col" colspan="2">Options</th>
+      <th scope="col"
+          *ngFor="let column of ['#','Title','Description','Price','Image','Options']"
+          [colSpan]="column === 'Options' ? 2 : 1">
+        {{column}}
+      </th>
     </tr>
     </thead>
     <tbody>
@@ -30,11 +28,9 @@
         <td>{{ product.title }}</td>
         <td>{{ product.description.substring(0,75)}}</td>
         <td>{{ product.price | currency : 'THB' }}</td>
-        <td>
-          <img width="70px" [src]="product.image">
-        </td>
+        <td> <img width="70px" [src]="product.image"></td>
         <td style="padding-top: 35px;">
-          <button class="btn btn-danger" (click)="onRemoveClicked(product.id)">
+          <button class="btn btn-danger" (click)="onRemove(product.id)">
             remove
           </button>
         </td>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, ReplaySubject} from "rxjs";
 
 @Injectable({
@@ -6,8 +6,8 @@ import {Observable, ReplaySubject} from "rxjs";
 })
 export class AuthUserService {
 
-  private checkUserLoggedIn = false
-  public userLoggedIn : ReplaySubject<string>; // ReplaySubject is sub of Observable i will use it As local storage *** Note if page has reload this service will reload too it means user had has logged in again ** this is a weakness
+  private checkUserLoggedIn: boolean = false
+  public userLoggedIn: ReplaySubject<string>; // ReplaySubject is sub of Observable i will use it As local storage *** Note if page has reload this service will reload too it means user had has logged in again ** this is a weakness
 
   constructor() {
     this.userLoggedIn = new ReplaySubject<string>();
@@ -30,6 +30,5 @@ export class AuthUserService {
     return this.userLoggedIn;
 
   }
-
 
 }

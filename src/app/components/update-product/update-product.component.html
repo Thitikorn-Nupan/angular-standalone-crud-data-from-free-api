@@ -1,11 +1,5 @@
 <div class="container w-50 mt-5">
-  <!--
-  *** Ag form module
-      Keep a pattern
-      #<name Of Form Tag>="ngForm"  works with (ngSubmit)="<method has argument type any>"
-  -->
-  <form #formUpdate="ngForm" (ngSubmit)="onSubmitFormUpdate(formUpdate.value)" class="form form-control mt-2">
-
+  <form #formUpdate="ngForm" (ngSubmit)="onSubmit(formUpdate.value)" class="form form-control mt-2">
     <strong>Form Update Product</strong>
 
     <div class="container" style="padding: 50px 50px 50px 285px;">
@@ -19,9 +13,8 @@
 
     <div class="form-floating mb-3">
       <input ngModel name="description"  type="text" class="form-control" placeholder="description..." >
-      <label>{{ product.description.substring(0,95)+'...' }}</label>
+      <label>{{ product.description.substring(0,35) }}...</label>
     </div>
-
 
     <div class="form-floating mb-3">
       <input ngModel name="price" type="number" class="form-control" placeholder="price..." >
@@ -30,6 +23,4 @@
 
     <button type="submit" class="btn btn-secondary mt-2">Submit</button>
   </form>
-
-
 </div>

@@ -13,8 +13,8 @@ import {Router} from "@angular/router";
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
-  private router: Router;
-  private authUserService: AuthUserService
+  private readonly router: Router;
+  private readonly authUserService: AuthUserService
   protected message = ''
 
   constructor(authUserService: AuthUserService, router: Router) {
@@ -33,18 +33,17 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  protected onClickedSubmitFormLogin(formLogin: any) {
-    let username = formLogin['username']
-    let password = formLogin['password']
-    this.authUserService.login(username, password).subscribe(
-      response => {
-        if (response === 'true') {
-          // this.router.navigate(['/table-students']) *** navigate is based on the provided array of commands and a starting point. If no starting route is provided, the navigation is absolute.
-          // *** same result just can pass only absolute route path.
-          this.router.navigateByUrl('/options') // go to this path then guard service will work
-        } else {
-          this.router.navigateByUrl('/login')
-        }
-      })
+  protected onSubmit(formLogin: any) {
+    const username = formLogin['username']
+    const password = formLogin['password']
+    this.authUserService.login(username, password).subscribe(response => {
+      if (response === 'true') {
+        // this.router.navigate(['/table-students']) *** navigate is based on the provided array of commands and a starting point. If no starting route is provided, the navigation is absolute.
+        // *** same result just can pass only absolute route path.
+        this.router.navigateByUrl('/options') // go to this path then guard service will work
+      } else {
+        this.router.navigateByUrl('/login')
+      }
+    })
   }
 }

@@ -19,8 +19,8 @@ import {Router} from "@angular/router";
 })
 export class CreateProductComponent {
 
-  private productService: ProductService;
-  private router: Router;
+  private readonly productService: ProductService;
+  private readonly router: Router;
   protected readonly categories = [
     {value: 'electronics', label: 'Electronics', id: 'radio2'},
     {value: 'jewelery', label: 'Jewelery', id: 'radio3'},
@@ -33,21 +33,17 @@ export class CreateProductComponent {
     this.router = router;
   }
 
-  onSubmitFormCreate(formCreate: any) {
-
+  protected onSubmit(formCreate: any) {
     const imageUrls = formCreate['image'];
     const title = formCreate['title'];
     const description = formCreate['description'];
     const price = formCreate['price'];
     const category = formCreate['category'];
 
-    // console.log(imageUrls, title, description, price,category);
-
     const product = new Product(0, title, price, description, category, imageUrls)
 
     this.productService.createProduct(product)
 
     this.router.navigateByUrl('/options')
-
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {RouterLink} from "@angular/router";
 
@@ -15,9 +15,9 @@ import {RouterLink} from "@angular/router";
   styleUrl: './menubar.component.css'
 })
 export class MenubarComponent {
-  protected routerLinks : { router:string , label : string} [] = [
-    { router : '',label:'Ag Standalone Crud Data'},
-    { router : '/options',label:'Home (Reads,Read,Update,Delete)'},
-    { router : '/create',label:'Create'},
+  protected routerLinks: { router: string, label: string } [] = [
+    {router: '', label: 'Ag Standalone Crud Data'},
+    {router: '/options', label: 'Home (Reads,Read,Update,Delete)'},
+    {router: '/create', label: 'Create'},
   ]
 }
